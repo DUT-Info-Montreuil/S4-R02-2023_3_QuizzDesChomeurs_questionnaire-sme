@@ -1,4 +1,4 @@
-package fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_modeles;
+package fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities;
 
 public class QuestionDTO {
 
