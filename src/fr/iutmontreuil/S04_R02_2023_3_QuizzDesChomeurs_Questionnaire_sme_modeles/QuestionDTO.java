@@ -1,6 +1,6 @@
 package fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_modeles;
 
-public class Question {
+public class QuestionDTO {
 
     private int id;
     private int numQuestion;
@@ -10,7 +10,7 @@ public class Question {
     private String explication;
     private String référence;
 
-    public Question(int id, int numQuestion, String libellé, String réponse, int difficulté, String explication, String référence) {
+    public QuestionDTO(int id, int numQuestion, String libellé, String réponse, int difficulté, String explication, String référence) {
         this.id = id;
         this.numQuestion = numQuestion;
         this.libellé = libellé;
