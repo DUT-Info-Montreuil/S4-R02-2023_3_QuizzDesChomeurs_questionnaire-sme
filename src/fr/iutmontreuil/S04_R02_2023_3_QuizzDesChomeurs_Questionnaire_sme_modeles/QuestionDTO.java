@@ -75,4 +75,9 @@ public class QuestionDTO {
     public void setRéférence(String référence) {
         this.référence = référence;
     }
+
+    @Override
+    public String toString() {
+        return numQuestion+"."+" "+libellé;
+    }
 }
