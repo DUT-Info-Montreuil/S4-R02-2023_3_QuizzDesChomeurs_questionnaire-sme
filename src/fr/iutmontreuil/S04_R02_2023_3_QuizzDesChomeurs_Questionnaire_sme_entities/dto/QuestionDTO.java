@@ -1,5 +1,7 @@
 package fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto;
 
+import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.bo.FichierQuestionnaireBO;
+
 public class QuestionDTO {
 
     private int id;
@@ -11,15 +13,15 @@ public class QuestionDTO {
     private String explication;
     private String référence;
 
-    public QuestionDTO(int id, int numQuestion, String libellé, String réponse, int difficulté, String explication, String référence,String langue) {
-        this.id = id;
-        this.numQuestion = numQuestion;
-        this.langue = langue;
-        this.libellé = libellé;
-        this.réponse = réponse;
-        this.difficulté = difficulté;
-        this.explication = explication;
-        this.référence = référence;
+    public QuestionDTO(FichierQuestionnaireBO question) {
+        this.id = question.getIdQuestion();
+        this.numQuestion = question.getNumQuestion();
+        this.langue = question.getLangue();
+        this.libellé = question.getLibelléQuestion();
+        this.réponse = question.getRéponseQuestion();
+        this.difficulté = question.getDifficultéQuestion();
+        this.explication = question.getExplicationQuestion();
+        this.référence = question.getRéférenceQuestion();
     }
 
     public int getId() {
