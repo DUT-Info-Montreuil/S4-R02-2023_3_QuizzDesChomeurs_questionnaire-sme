@@ -1,4 +1,4 @@
-package fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_impl;
+package Test;
 
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.bo.FichierQuestionnaireBO;
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.QuestionDTO;
@@ -26,6 +26,7 @@ class FichierQuestionnaireBOTest {
         FichierQuestionnaireBO fichierQuestionnaireBO = new FichierQuestionnaireBO(1);
         assertTrue(fichierQuestionnaireBO.getIdQuestion()==1);
         assertTrue(fichierQuestionnaireBO.getNumQuestion()==2);
+        assertTrue(fichierQuestionnaireBO.getLangue().equals("fr"));
         assertTrue(fichierQuestionnaireBO.getLibelléQuestion().equals("Quel sport de raquette porte le nom de la ville anglaise où il fut inventé ?"));
         assertTrue(fichierQuestionnaireBO.getRéponseQuestion().equals("Badminton"));
         assertTrue(fichierQuestionnaireBO.getDifficultéQuestion()==1);
