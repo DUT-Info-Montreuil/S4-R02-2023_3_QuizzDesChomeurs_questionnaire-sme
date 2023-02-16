@@ -30,7 +30,7 @@ public class FichierQuestionnaireBO {
                 résultatCSV.add(ligne);
             }
 
-            String[] attributs_question = résultatCSV.get(ligneQuestion-1).split(separateurFichier);
+            String[] attributs_question = résultatCSV.get(ligneQuestion).split(separateurFichier);
 
             this.idQuestion = Integer.parseInt(attributs_question[0]);
             this.numQuestion = Integer.parseInt(attributs_question[1]);
@@ -105,6 +105,14 @@ public class FichierQuestionnaireBO {
 
     public void setRéférenceQuestion(String référenceQuestion) {
         this.référenceQuestion = référenceQuestion;
+    }
+
+    public String getLangue() {
+        return langue;
+    }
+
+    public void setLangue(String langue) {
+        this.langue = langue;
     }
 
     @Override
