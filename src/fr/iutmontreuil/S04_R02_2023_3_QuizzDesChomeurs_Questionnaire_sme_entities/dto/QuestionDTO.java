@@ -4,15 +4,17 @@ public class QuestionDTO {
 
     private int id;
     private int numQuestion;
+    private String langue;
     private String libellé;
     private String réponse;
     private int difficulté;
     private String explication;
     private String référence;
 
-    public QuestionDTO(int id, int numQuestion, String libellé, String réponse, int difficulté, String explication, String référence) {
+    public QuestionDTO(int id, int numQuestion, String libellé, String réponse, int difficulté, String explication, String référence,String langue) {
         this.id = id;
         this.numQuestion = numQuestion;
+        this.langue = langue;
         this.libellé = libellé;
         this.réponse = réponse;
         this.difficulté = difficulté;
