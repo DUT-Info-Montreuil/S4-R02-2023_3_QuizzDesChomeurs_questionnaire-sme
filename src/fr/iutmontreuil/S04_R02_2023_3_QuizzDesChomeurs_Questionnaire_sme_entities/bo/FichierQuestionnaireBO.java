@@ -1,5 +1,9 @@
 package fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.bo;
 
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.QuestionnairesDTO;
 
 import java.io.BufferedReader;
@@ -7,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FichierQuestionnaireBO {
 
@@ -21,16 +26,29 @@ public class FichierQuestionnaireBO {
 
     public FichierQuestionnaireBO(int ligneQuestion) {
 
-        String ligne = "";
-        String separateurFichier = ";";
-        ArrayList<String> résultatCSV = new ArrayList<String>();
-        try{
-            BufferedReader br = new BufferedReader(new FileReader("src/fr/iutmontreuil/S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_ressources/questionsQuizz_V1.1.csv"));
-            while((ligne = br.readLine()) != null){
-                résultatCSV.add(ligne);
-            }
+        try {
 
-            String[] attributs_question = résultatCSV.get(ligneQuestion).split(separateurFichier);
+            String fichierCSV = "src/fr/iutmontreuil/S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_ressources/questionsQuizz_V1.1.csv";
+            FileReader filereader = new FileReader(fichierCSV);
+
+
+            List<String[]> resultatCSV = new ArrayList<>();
+
+            CSVParser séparateur = new CSVParserBuilder().withSeparator(';').build();
+
+            CSVReader csvReader = new CSVReaderBuilder(filereader)
+                    .withCSVParser(séparateur)
+                    .build();
+
+            resultatCSV = csvReader.readAll();
+
+            String[] attributs_question = resultatCSV.get(ligneQuestion);
+
+            String[] retireBOM = resultatCSV.get(0);
+
+            if (retireBOM[0].startsWith("\uFEFF")) {
+                retireBOM[0] = retireBOM[0].substring(1);
+            }
 
             this.idQuestion = Integer.parseInt(attributs_question[0]);
             this.numQuestion = Integer.parseInt(attributs_question[1]);
@@ -40,15 +58,12 @@ public class FichierQuestionnaireBO {
             this.difficultéQuestion = Integer.parseInt(attributs_question[5]);
             this.explicationQuestion = attributs_question[6];
             this.référenceQuestion = attributs_question[7];
+
         }
-
-
-        catch (FileNotFoundException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public int getIdQuestion() {
