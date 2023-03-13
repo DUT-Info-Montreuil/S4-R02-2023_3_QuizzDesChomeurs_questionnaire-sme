@@ -24,6 +24,17 @@ public class QuestionDTO {
         this.référence = question.getRéférenceQuestion();
     }
 
+    public QuestionDTO(int id, int numQuestion, String langue, String libellé, String réponse, int difficulté, String explication, String référence) {
+        this.id = id;
+        this.numQuestion = numQuestion;
+        this.langue = langue;
+        this.libellé = libellé;
+        this.réponse = réponse;
+        this.difficulté = difficulté;
+        this.explication = explication;
+        this.référence = référence;
+    }
+
     public int getId() {
         return id;
     }
