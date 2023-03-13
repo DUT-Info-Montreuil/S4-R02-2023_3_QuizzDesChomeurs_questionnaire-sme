@@ -14,6 +14,9 @@ import java.util.List;
 
 public class QuestionnaireImpl implements IServiceQuestionnaire {
 
+    public QuestionnaireImpl() {
+    }
+
     @Override
     public ArrayList<QuestionnairesDTO> fournirListeQuestionnaires(QuestionnairesDTO questionnaire) {
         ArrayList<QuestionnairesDTO> listeQuestionnaire = new ArrayList<>();
