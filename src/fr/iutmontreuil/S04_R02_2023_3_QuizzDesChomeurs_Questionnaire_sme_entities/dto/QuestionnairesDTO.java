@@ -1,25 +1,27 @@
 package fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto;
 
-import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.QuestionDTO;
-
 import java.util.ArrayList;
 
 public class QuestionnairesDTO {
-    private ArrayList<QuestionDTO> questions;
+    private ArrayList<QuestionDTO> listeQuestion;
 
     public QuestionnairesDTO(){
-        this.questions = new ArrayList<>();
+        this.listeQuestion = new ArrayList<>();
     }
 
-    public QuestionnairesDTO(ArrayList<QuestionDTO> questions){
-        this.questions = questions;
+    public QuestionnairesDTO(ArrayList<QuestionDTO> listeQuestion){
+        this.listeQuestion = listeQuestion;
     }
 
     public void addQuestion(QuestionDTO question){
-        this.questions.add(question);
+        this.listeQuestion.add(question);
     }
 
-    public ArrayList<QuestionDTO> getQuestions() {
-        return questions;
+    public ArrayList<QuestionDTO> getListeQuestion() {
+        return listeQuestion;
+    }
+
+    public void setListeQuestion(ArrayList<QuestionDTO> listeQuestion) {
+        this.listeQuestion = listeQuestion;
     }
 }
