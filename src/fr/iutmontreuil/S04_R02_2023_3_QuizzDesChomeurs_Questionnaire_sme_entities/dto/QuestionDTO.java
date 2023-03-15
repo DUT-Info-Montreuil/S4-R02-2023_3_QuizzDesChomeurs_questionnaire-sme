@@ -91,6 +91,15 @@ public class QuestionDTO {
         this.référence = référence;
     }
 
+
+    public String getLangue() {
+        return langue;
+    }
+
+    public void setLangue(String langue) {
+        this.langue = langue;
+    }
+
     @Override
     public String toString() {
         return numQuestion+"."+" "+libellé;
