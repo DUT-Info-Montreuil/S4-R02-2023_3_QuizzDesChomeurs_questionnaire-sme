@@ -18,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IServiceQuestionnaireTest{
 
+    QuestionnaireImpl questionnaire = new QuestionnaireImpl();
+
     @BeforeEach
     public void init(TestInfo testInfo) {
         System.out.println("Appel du test"+testInfo.getDisplayName());
@@ -26,15 +28,15 @@ class IServiceQuestionnaireTest{
     @Test
     public void fournirUnQuestionnaireTest() {
         assertThrows(IllegalArgumentException.class, () -> {
-            fournirUnQuestionnaire(null);
+            questionnaire.fournirUnQuestionnaire(null);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            fournirUnQuestionnaire("lefichiernestpaslamalheuresement");
+            questionnaire.fournirUnQuestionnaire("lefichiernestpaslamalheuresement");
         });
 
-        List<QuestionDTO> questions = fournirUnQuestionnaire("src/fr/iutmontreuil/S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_ressources/questionsQuizz_V1.1.csv");
-        assertEquals(2, questions.size());
+        List<QuestionDTO> questions = questionnaire.fournirUnQuestionnaire("src/fr/iutmontreuil/S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_ressources/questionsQuizz_V1.1.csv");
+        assertEquals(30, questions.size());
 
         assertTrue(questions.get(0).getId()==1);
         assertTrue(questions.get(0).getId()==1);
