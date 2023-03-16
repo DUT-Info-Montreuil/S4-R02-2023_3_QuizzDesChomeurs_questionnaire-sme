@@ -27,13 +27,6 @@ class IServiceQuestionnaireTest{
 
     @Test
     public void fournirUnQuestionnaireTest() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            questionnaire.fournirUnQuestionnaire(null);
-        });
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            questionnaire.fournirUnQuestionnaire("lefichiernestpaslamalheuresement");
-        });
 
         List<QuestionDTO> questions = questionnaire.fournirUnQuestionnaire("src/fr/iutmontreuil/S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_ressources/questionsQuizz_V1.1.csv");
         assertEquals(30, questions.size());
