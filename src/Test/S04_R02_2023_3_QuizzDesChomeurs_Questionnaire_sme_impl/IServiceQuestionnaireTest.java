@@ -16,31 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IServiceQuestionnaireTest implements IServiceQuestionnaire{
-
-    @Override
-    public ArrayList<QuestionnairesDTO> fournirListeQuestionnaires() {
-        ArrayList<QuestionnairesDTO> questionnairesDTO = new ArrayList<>();
-        return questionnairesDTO;
-    }
-
-    @Override
-    public List<QuestionDTO> fournirUnQuestionnaire(String fichierCSV) {
-
-        if (fichierCSV == null) {
-            throw new IllegalArgumentException("Le fichier n'existe pas");
-        }
-
-        File file = new File(fichierCSV);
-        if (!file.exists()) {
-            throw new IllegalArgumentException("Le fichier "+fichierCSV+" n'existe pas");
-        }
-
-        List<QuestionDTO> res = new ArrayList<>();
-        res.add(new QuestionDTO(1, 1, "non utilisé", "non utilisé", "non utilisé", 0, "non utilisé", "non utilisé"));
-        res.add(new QuestionDTO(1, 2, "fr", "Quel sport de raquette porte le nom de la ville anglaise où il fut inventé ?", "Badminton", 1, "Le badminton est toujours pratiqué en intérieur car avec le vent, en extérieur, le volant peut brusquement changer de direction.", "https://fr.wikipedia.org/wiki/Badminton"));
-        return res;
-    }
+class IServiceQuestionnaireTest{
 
     @BeforeEach
     public void init(TestInfo testInfo) {

@@ -8,6 +8,8 @@ import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme.entitie
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.QuestionDTO;
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.QuestionnairesDTO;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +20,28 @@ public class QuestionnaireImpl implements IServiceQuestionnaire {
     }
 
     @Override
-    public ArrayList<QuestionnairesDTO> fournirListeQuestionnaires(QuestionnairesDTO questionnaire) {
-        ArrayList<QuestionnairesDTO> listeQuestionnaire = new ArrayList<>();
-        listeQuestionnaire.add(questionnaire);
-        return listeQuestionnaire;
+    public ArrayList<QuestionnairesDTO> fournirListeQuestionnaires() {
+        return null;
     }
 
     @Override
-    public QuestionnairesDTO fournirUnQuestionnaire(String fichierCSV) {
+    public List<QuestionDTO> fournirUnQuestionnaire(String fichierCSV) {
 
-        QuestionnairesDTO questionnairesDTO = new QuestionnairesDTO();
+        try {
+            if (fichierCSV == null || fichierCSV.isEmpty()) {
+                throw new IllegalArgumentException("Erreur le fichier n'existe pas.");
+            }
+
+            File file = new File(fichierCSV);
+
+            if (!file.exists()) {
+                throw new FileNotFoundException("Erreur le fichier n'existe pas.");
+            }
+        }catch (Exception e ) {
+
+        }
+
+        List<QuestionDTO> questionnairesDTO = new ArrayList<>();
 
         try {
 
@@ -62,7 +76,7 @@ public class QuestionnaireImpl implements IServiceQuestionnaire {
                 String explication = attributParColonne[6];
                 String référence = attributParColonne[7];
 
-                questionnairesDTO.addQuestion(new QuestionDTO(id,num,langue,libellé,réponse,difficulté,explication,référence));
+                questionnairesDTO.add(new QuestionDTO(id,num,langue,libellé,réponse,difficulté,explication,référence));
             }
 
         }
