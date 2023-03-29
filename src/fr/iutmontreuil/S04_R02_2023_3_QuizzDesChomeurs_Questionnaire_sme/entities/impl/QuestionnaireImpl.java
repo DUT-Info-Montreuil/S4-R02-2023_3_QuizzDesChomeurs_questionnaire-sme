@@ -86,5 +86,9 @@ public class QuestionnaireImpl implements IServiceQuestionnaire {
         return questionnairesDTO;
     }
 
+    @Override
+    public boolean verifReponse(QuestionDTO question,String reponse) {
+        return question.getRéponse().equals(reponse);
+    }
 
 }

@@ -10,4 +10,5 @@ public interface IServiceQuestionnaire {
 
     public ArrayList<QuestionnairesDTO> fournirListeQuestionnaires();
     public List<QuestionDTO> fournirUnQuestionnaire(String fichierCSV);
+    public boolean verifReponse(QuestionDTO question,String reponse);
 }
