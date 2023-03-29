@@ -6,14 +6,22 @@ import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entitie
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.StatistiquesDTO;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class QuizzImpl implements IServiceQuizz {
 
-    @Override
-    public void preparerLesElementsDeLaPartie(QuestionnairesDTO questionnairesDTO,StatistiquesDTO statistique) {
+    private QuestionnaireImpl questionnaireImpl;
 
-        statistique.setScore(0);
-        statistique.setTime(0);
+    public QuizzImpl() {
+        this.questionnaireImpl = new QuestionnaireImpl();
+    }
+
+    @Override
+    public void preparerLesElementsDeLaPartie(String fichier) {
+
+        List<QuestionDTO> liste_Questions = questionnaireImpl.fournirUnQuestionnaire(fichier);
+        Collections.shuffle(liste_Questions);
     }
 
     @Override
@@ -28,6 +36,18 @@ public class QuizzImpl implements IServiceQuizz {
         questionnaire.incrementeIndex();
 
         return index;
+    }
+
+    @Override
+    public void determinerLeScoreDeLaQuestion(StatistiquesDTO statistiquesDTO, QuestionDTO questionDTO, String reponse) {
+
+        if(questionnaireImpl.verifReponse(questionDTO,reponse)) {
+            if(questionDTO.getDifficulté()==3) {
+                statistiquesDTO.incrementeScore(2);
+            }else {
+                statistiquesDTO.incrementeScore(1);
+            }
+        }
     }
 
 }

@@ -6,8 +6,10 @@ import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entitie
 
 public interface IServiceQuizz {
 
-    public void preparerLesElementsDeLaPartie(QuestionnairesDTO questionnairesDTO,StatistiquesDTO statistique);
+    public void preparerLesElementsDeLaPartie(String fichier);
 
     public int determinerLaProchaineQuestions(QuestionnairesDTO questionnaire);
+
+    public void determinerLeScoreDeLaQuestion(StatistiquesDTO statistiquesDTO,QuestionDTO questionDTO,String reponse);
 
 }
