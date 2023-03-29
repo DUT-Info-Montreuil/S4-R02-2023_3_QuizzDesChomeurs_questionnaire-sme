@@ -44,4 +44,8 @@ public class StatistiquesDTO {
     public void setTime(int time) {
         this.time = time;
     }
+
+    public void incrementeScore(int point) {
+        this.score +=point;
+    }
 }
