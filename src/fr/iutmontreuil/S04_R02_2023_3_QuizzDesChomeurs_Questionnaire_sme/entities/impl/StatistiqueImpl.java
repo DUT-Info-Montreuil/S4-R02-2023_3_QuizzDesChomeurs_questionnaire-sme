@@ -16,7 +16,11 @@ public class StatistiqueImpl implements IServiceStatistique {
     public void determinerLeScoreDeLaQuestion(StatistiquesDTO statistiquesDTO, QuestionDTO questionDTO, String reponse) {
 
         if(questionnaire.verifReponse(questionDTO,reponse)) {
-            statistiquesDTO.incrementeScore(1);
+            if(questionDTO.getDifficulté()==3) {
+                statistiquesDTO.incrementeScore(2);
+            }else {
+                statistiquesDTO.incrementeScore(1);
+            }
         }
     }
 
