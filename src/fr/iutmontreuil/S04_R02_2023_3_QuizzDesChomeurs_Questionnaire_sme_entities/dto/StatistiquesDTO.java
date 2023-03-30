@@ -2,50 +2,22 @@ package fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entiti
 
 import java.sql.Time;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class StatistiquesDTO {
-    private QuestionnairesDTO questionnaire;
-    private int score;
-    private int time;
+
+    ArrayList<StatistiqueQuestionDTO> listeStatistique;
 
 
-    public StatistiquesDTO(QuestionnairesDTO questionnaire,int score) {
-        this.questionnaire = questionnaire;
-        this.score = score;
-        this.time = 0;
+    public StatistiquesDTO(ArrayList<StatistiqueQuestionDTO> listeStatistique) {
+        this.listeStatistique = listeStatistique;
     }
 
-    public String getTime(){
-        int heures = 0;
-        int minutes = 0;
-        int secondes = time;
-
-        while(secondes > 60){
-            minutes++;
-            secondes = secondes - 60;
-        }
-
-        while(minutes > 60){
-            heures++;
-            minutes = minutes - 60;
-        }
-
-        return heures + " heures, "+minutes+" minutes et"+ secondes+" secondes.";
+    public ArrayList<StatistiqueQuestionDTO> getListeStatistique() {
+        return listeStatistique;
     }
 
-    public int getScore(){
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
-    public void incrementeScore(int point) {
-        this.score +=point;
+    public void setListeStatistique(ArrayList<StatistiqueQuestionDTO> listeStatistique) {
+        this.listeStatistique = listeStatistique;
     }
 }

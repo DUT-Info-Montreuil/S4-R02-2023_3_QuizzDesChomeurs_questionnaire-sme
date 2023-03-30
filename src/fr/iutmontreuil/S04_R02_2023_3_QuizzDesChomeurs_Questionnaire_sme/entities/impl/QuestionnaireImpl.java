@@ -7,6 +7,8 @@ import com.opencsv.CSVReaderBuilder;
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme.entities.modeles.IServiceQuestionnaire;
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.QuestionDTO;
 import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.QuestionnairesDTO;
+import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.StatistiqueQuestionDTO;
+import fr.iutmontreuil.S04_R02_2023_3_QuizzDesChomeurs_Questionnaire_sme_entities.dto.StatistiquesDTO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -87,8 +89,26 @@ public class QuestionnaireImpl implements IServiceQuestionnaire {
     }
 
     @Override
-    public boolean verifReponse(QuestionDTO question,String reponse) {
-        return question.getRéponse().equals(reponse);
+    public void majStatsQuestion(QuestionDTO question) {
+
+        if(question.getDifficulté()==1 || question.getDifficulté()==2) {
+            question.getStatistique().setScore(1);
+        }else {
+            question.getStatistique().setScore(2);
+        }
+    }
+
+    @Override
+    public StatistiquesDTO fournirStatsQuestions(QuestionnairesDTO questionnaires) {
+
+        ArrayList<StatistiqueQuestionDTO> listeStats = new ArrayList<>();
+
+        for(QuestionDTO q : questionnaires.getListeQuestion()) {
+            listeStats.add(q.getStatistique());
+        }
+
+        return new StatistiquesDTO(listeStats);
+
     }
 
 }

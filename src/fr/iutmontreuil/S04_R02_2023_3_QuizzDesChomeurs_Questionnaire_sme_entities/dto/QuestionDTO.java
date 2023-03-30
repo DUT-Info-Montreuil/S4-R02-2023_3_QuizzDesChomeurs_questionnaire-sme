@@ -12,6 +12,7 @@ public class QuestionDTO {
     private int difficulté;
     private String explication;
     private String référence;
+    private StatistiqueQuestionDTO statistique;
 
     public QuestionDTO(FichierQuestionnaireBO question) {
         this.id = question.getIdQuestion();
@@ -34,6 +35,19 @@ public class QuestionDTO {
         this.explication = explication;
         this.référence = référence;
     }
+
+    public QuestionDTO(int id, int numQuestion, String langue, String libellé, String réponse, int difficulté, String explication, String référence,StatistiqueQuestionDTO statistique) {
+        this.id = id;
+        this.numQuestion = numQuestion;
+        this.langue = langue;
+        this.libellé = libellé;
+        this.réponse = réponse;
+        this.difficulté = difficulté;
+        this.explication = explication;
+        this.référence = référence;
+        this.statistique = statistique;
+    }
+
 
     public int getId() {
         return id;
@@ -98,6 +112,14 @@ public class QuestionDTO {
 
     public void setLangue(String langue) {
         this.langue = langue;
+    }
+
+    public StatistiqueQuestionDTO getStatistique() {
+        return statistique;
+    }
+
+    public void setStatistique(StatistiqueQuestionDTO statistique) {
+        this.statistique = statistique;
     }
 
     @Override
